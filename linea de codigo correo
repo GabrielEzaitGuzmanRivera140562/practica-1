@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Validar Correo Electrónico</title>
+</head>
+<body>
+    <h1>Validar Correo Electrónico</h1>
+
+    <input type="text" id="emailInput" placeholder="Ingresa un correo electrónico">
+    <button onclick="validarCorreo()">Validar</button>
+
+    <script>
+        function validarCorreo() {
+            var email = document.getElementById("emailInput").value;
+            var terminacionesValidas = ["com", "com.mx", "mx"];
+
+            if (email.includes("@")) {
+                var partes = email.split("@");
+                var dominio = partes[1];
+
+                var terminacion = dominio.split(".");
+                terminacion = terminacion[terminacion.length - 1];
+
+                if (terminacionesValidas.includes(terminacion)) {
+                    alert("El correo electrónico es válido");
+                } else {
+                    alert("El correo electrónico no tiene una terminación válida");
+                }
+            } else {
+                alert("El correo electrónico no contiene el caracter '@'");
+            }
+        }
+    </script>
+</body>
+</html>
